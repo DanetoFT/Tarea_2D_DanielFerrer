@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Trampa : MonoBehaviour
 {
     PlayerController player;
 
     int dmg;
+
+    public TextMeshProUGUI texto;
 
     // Start is called before the first frame update
     void Start()
