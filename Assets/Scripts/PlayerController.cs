@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    public bool isDead;
+
     Rigidbody2D rbPlayer;
-    Animator animatorPlayer;
+    public Animator animatorPlayer;
 
     public Animator attackAnimator;
 
@@ -21,6 +23,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isDead = false;
         vidaActual = vidaMax;
         rbPlayer = GetComponent<Rigidbody2D>();
         animatorPlayer = GetComponent<Animator>();
@@ -29,7 +32,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement();
+        if(isDead == false)
+        {
+            Movement();
+        }
     }
 
     void Movement()
