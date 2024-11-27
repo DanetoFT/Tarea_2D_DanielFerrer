@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int vidaMax = 3;
+    public int vidaMax;
     public int vidaActual;
     public Animator enemyAnimator;
 
@@ -12,11 +12,5 @@ public class EnemyHealth : MonoBehaviour
     void Start()
     {
         vidaActual = vidaMax;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

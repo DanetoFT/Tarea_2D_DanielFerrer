@@ -14,13 +14,14 @@ public class PlayerController : MonoBehaviour
     public float speed = 3;
     public float jumpForce = 6.5f;
     bool isOnGround = true;
-    int health = 5;
-    public int money = 0;
+    public int vidaMax;
+    public int vidaActual;
     float moveHorizontal;
 
     // Start is called before the first frame update
     void Start()
     {
+        vidaActual = vidaMax;
         rbPlayer = GetComponent<Rigidbody2D>();
         animatorPlayer = GetComponent<Animator>();
     }

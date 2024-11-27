@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    public EnemyHealth enemy;
+    public int dmg;
 
     // Start is called before the first frame update
     void Start()
@@ -18,11 +18,12 @@ public class Attack : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Damage");
+        EnemyHealth enemy = other.GetComponent<EnemyHealth>();
 
-        enemy.vidaActual--;
+        enemy.vidaActual -= dmg;
         enemy.enemyAnimator.SetTrigger("Hit");
 
         Debug.Log(enemy.vidaActual.ToString());
