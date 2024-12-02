@@ -11,6 +11,8 @@ public class Trampa : MonoBehaviour
 
     public TextMeshProUGUI texto;
 
+    public Animator textAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +44,8 @@ public class Trampa : MonoBehaviour
         {
             player.animatorPlayer.SetTrigger("Hit");
             player.vidaActual -= dmg;
+            texto.text = "-" + dmg.ToString();
+            textAnimator.SetTrigger("Damage");
             Debug.Log(player.vidaActual);
         }
     }
