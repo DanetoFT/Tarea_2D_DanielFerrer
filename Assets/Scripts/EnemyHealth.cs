@@ -15,9 +15,9 @@ public class EnemyHealth : MonoBehaviour
         vidaActual = vidaMax;
     }
 
-    public void randomDamage()
+    public void ChangeDamage()
     {
-        damage = Random.Range(0, 10);
+        damage++;
     }
 
     public int getDamage()

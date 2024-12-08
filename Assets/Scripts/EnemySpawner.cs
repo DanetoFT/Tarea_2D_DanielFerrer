@@ -4,35 +4,53 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject[] listweapon;
-    public Transform spawnWeapon;
-    public Transform[] spawnArray;
-    
-    // Start is called before the first frame update
+    [Header("Spawn")]
+    public GameObject[] enemyList;
+    public Transform[] spawnPoints;
+    public GameObject[] spawnedEnemies;
     void Start()
     {
-        SpawnEnemies();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void SpawnEnemies()
-    {
-        int numeroRandom = Random.Range(0, listweapon.Length);
-        int spawnRandom = Random.Range(0, spawnArray.Length);
-
-        Instantiate(listweapon[numeroRandom], spawnArray[spawnRandom]);
-
-
-        for (int i = 0; i < listweapon.Length; i++)
+        if (enemyList.Length != spawnPoints.Length)
         {
-            var objetoInstanciado = Instantiate(listweapon[i], spawnArray[i].position + new Vector3(i, 0, 0), spawnArray[i].rotation);
+            Debug.LogError("Los enemigos no coinciden con los spawns");
+            return;
+        }
 
-            objetoInstanciado.GetComponent<EnemyHealth>().randomDamage();
+        spawnedEnemies = new GameObject[enemyList.Length];
+
+        for (int i = 0; i < enemyList.Length; i++)
+        {
+            Vector3 spawnPoint = spawnPoints[i].position;
+            var objetoInstanciado = Instantiate(enemyList[i], spawnPoint, spawnPoints[i].rotation);
+
+            spawnedEnemies[i] = objetoInstanciado;
+
+            var enemyController = objetoInstanciado.GetComponent<EnemyHealth>();
+        }
+    }
+    public void MostrarEnemigosInstanciados()
+    {
+        for (int i = 0; i < spawnedEnemies.Length; i++)
+        {
+            if (spawnedEnemies[i] != null)
+            {
+                Debug.Log($"Enemigo {i} instanciado: {spawnedEnemies[i].name}");
+            }
+        }
+    }
+
+    public void CambioDamage()
+    {
+        for(int i = 0; i < spawnedEnemies.Length; i++)
+        {
+            if (spawnedEnemies[i] != null)
+            {
+                var enemyHealth = spawnedEnemies[i].GetComponent<EnemyHealth>();
+
+                enemyHealth.ChangeDamage();
+
+                Debug.Log("Daño de " + spawnedEnemies[i] + " aumentado");
+            }
         }
     }
 }
