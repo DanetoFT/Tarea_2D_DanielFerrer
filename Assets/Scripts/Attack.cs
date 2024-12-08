@@ -26,7 +26,7 @@ public class Attack : MonoBehaviour
         enemy.vidaActual -= dmg;
         enemy.enemyAnimator.SetTrigger("Hit");
 
-        Debug.Log(enemy.vidaActual.ToString());
+        Debug.Log("Vida del enemigo: " + enemy.vidaActual.ToString());
 
         if (enemy.vidaActual <= 0)
         {

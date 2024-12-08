@@ -34,19 +34,19 @@ public class Trampa : MonoBehaviour
 
     public void Damage()
     {
-        if(player.vidaActual <= 0)
-        {
-            player.isDead = true;
-            player.animatorPlayer.SetTrigger("Death");
-            Debug.Log("Has Muerto");
-        }
-        else
+        if(player.vidaActual > 0)
         {
             player.animatorPlayer.SetTrigger("Hit");
             player.vidaActual -= dmg;
             texto.text = "-" + dmg.ToString();
             textAnimator.SetTrigger("Damage");
             Debug.Log(player.vidaActual);
+        }
+        else if (player.vidaActual <= 0)
+        {
+            player.isDead = true;
+            player.animatorPlayer.SetTrigger("Death");
+            Debug.Log("Has Muerto");
         }
     }
 }

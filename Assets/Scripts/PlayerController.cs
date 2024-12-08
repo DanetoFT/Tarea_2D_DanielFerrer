@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public int vidaMax;
     public int vidaActual;
     float moveHorizontal;
+    public int cura;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,12 @@ public class PlayerController : MonoBehaviour
         if(isDead == false)
         {
             Movement();
+        }
+
+        if(vidaActual <= 0)
+        {
+            isDead = true;
+
         }
     }
 
@@ -83,11 +90,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void Damage(int dmg)
-    {
-
-    }
-
     public void Saltar()
     {
         //salto
@@ -96,7 +98,6 @@ public class PlayerController : MonoBehaviour
             rbPlayer.velocity = new Vector2(moveHorizontal, jumpForce);
             animatorPlayer.SetTrigger("Jump");
             animatorPlayer.SetBool("Jumping", true);
-            //PlayAudioClip(2);
         }
     }
 
@@ -119,6 +120,15 @@ public class PlayerController : MonoBehaviour
             isOnGround = false;
 
             animatorPlayer.SetBool("Jumping", true);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (vidaActual < vidaMax)
+        {
+            vidaActual += cura;
+            Debug.Log("Vida actual: " + vidaActual);
         }
     }
 }
