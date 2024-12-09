@@ -18,15 +18,15 @@ public class Botiquin : MonoBehaviour
         
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+        PlayerController player = other.gameObject.GetComponent<PlayerController>();
 
-        if(player!= null && player.vidaActual < player.vidaMax)
+        if (player.vidaActual < player.vidaMax)
         {
             player.vidaActual += cura;
             Debug.Log("Te has curado " + cura);
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }

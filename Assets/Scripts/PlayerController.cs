@@ -36,12 +36,6 @@ public class PlayerController : MonoBehaviour
         {
             Movement();
         }
-
-        if(vidaActual <= 0)
-        {
-            isDead = true;
-
-        }
     }
 
     void Movement()
