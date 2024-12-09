@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cfc4153be860ec45946f89326c08c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaMax: 10
+  vidaMax: 5
   vidaActual: 0
   enemyAnimator: {fileID: 1689513557234770870}
   damage: 1
