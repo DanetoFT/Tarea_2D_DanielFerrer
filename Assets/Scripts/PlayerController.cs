@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     public int vidaMax;
     public int vidaActual;
     float moveHorizontal;
-    public int cura;
 
     // Start is called before the first frame update
     void Start()
@@ -120,15 +119,6 @@ public class PlayerController : MonoBehaviour
             isOnGround = false;
 
             animatorPlayer.SetBool("Jumping", true);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (vidaActual < vidaMax)
-        {
-            vidaActual += cura;
-            Debug.Log("Vida actual: " + vidaActual);
         }
     }
 }
