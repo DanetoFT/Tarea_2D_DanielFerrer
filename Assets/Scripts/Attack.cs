@@ -20,7 +20,6 @@ public class Attack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Damage");
         EnemyHealth enemy = other.GetComponent<EnemyHealth>();
 
         enemy.vidaActual -= dmg;

@@ -27,7 +27,7 @@ public class Trampa : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        dmg = Random.Range(1, 5);
+        dmg = Random.Range(1, 3);
         player = other.GetComponent<PlayerController>();
         Damage();
     }
@@ -42,11 +42,10 @@ public class Trampa : MonoBehaviour
             textAnimator.SetTrigger("Damage");
             Debug.Log(player.vidaActual);
         }
-        else if (player.vidaActual <= 0)
+        else if(player.vidaActual <= 0)
         {
-            player.isDead = true;
             player.animatorPlayer.SetTrigger("Death");
-            Debug.Log("Has Muerto");
+            Debug.Log("Has muerto");
         }
     }
 }

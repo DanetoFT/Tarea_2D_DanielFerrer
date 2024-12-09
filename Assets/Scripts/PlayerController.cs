@@ -36,6 +36,17 @@ public class PlayerController : MonoBehaviour
         {
             Movement();
         }
+
+        if (vidaActual <= 0)
+        {
+            isDead = true;
+            animatorPlayer.SetTrigger("Death");
+        }
+
+        if(vidaActual >= vidaMax)
+        {
+            vidaActual = vidaMax;
+        }
     }
 
     void Movement()
